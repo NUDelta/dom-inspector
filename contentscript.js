@@ -39,5 +39,25 @@ $(document).click(function(e) {
            * through the specified callback */
           response(domInfo);
       }
+
+      // slider adjustment callback
+      if ((msg.from === 'popup') && (msg.subject === "DOMHide")) {
+          console.log(msg.payload);
+          for (var i = 0; i < treeByLevel.length; i++) {
+              if (i < msg.payload) {
+                  console.log("show elements at level " + i);
+                  treeByLevel[i].forEach(function(element, idx) {
+                      element.style.visibility = "visible";
+                      console.log(element);
+                  });
+              } else {
+                  console.log("hide elements at level " + i);
+                  treeByLevel[i].forEach(function(element, idx) {
+                      element.style.visibility = "hidden";
+                      console.log(element);
+                  });
+              }
+          }
+      }
     });
 });

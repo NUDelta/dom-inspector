@@ -4,11 +4,22 @@ function generateSlider(info) {
     if (info.depth) {
         var depth = parseInt(info.depth);
         $('#slider').slider({
-            min: 1,
+            min: 0,
             max: depth,
             value: depth,
             slide: function(event, ui) {
                 $('#level').val(ui.value);
+
+                // send message back
+                chrome.tabs.query({
+                    active: true,
+                    currentWindow: true
+                }, function(tabs) {
+                    chrome.tabs.sendMessage(
+                        tabs[0].id,
+                        {from: 'popup', subject: 'DOMHide', payload: ui.value}
+                    );
+                });
             }
         });
         $('#level').val($('#slider').slider('value'));
