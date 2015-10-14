@@ -10,13 +10,13 @@
     },
 
     "content_scripts": [{
-        "matches":    ["*://*.stackoverflow.com/*"],
-        "js":         ["contentscript.js"],
+        "matches":    ["<all_urls>"],
+        "js":         ["jquery-1.11.3.js", "contentscript.js"],
         "run_at":     "document_idle",
         "all_frames": false
     }],
 
-    "page_action": {
+    "browser_action": {
         "default_title": "Test Extension",
         "default_icon": "icon.png",
         "default_popup": "popup.html"
