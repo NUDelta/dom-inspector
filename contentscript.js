@@ -18,6 +18,8 @@ $(document).click(function(e) {
         }
     }
 
+    console.log(treeByLevel);
+
     chrome.runtime.sendMessage({
       from:    'content',
       subject: 'showPageAction'
@@ -31,9 +33,7 @@ $(document).click(function(e) {
            * (For your specific requirements `document.querySelectorAll(...)`
            *  should be equivalent to jquery's `$(...)`) */
           var domInfo = {
-              total:   document.querySelectorAll('*').length,
-              inputs:  document.querySelectorAll('input').length,
-              buttons: document.querySelectorAll('button').length
+              depth: treeByLevel.length
           };
           /* Directly respond to the sender (popup),
            * through the specified callback */

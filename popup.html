@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="jquery-ui-1.11.4.custom/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <script type="text/javascript" src="jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
+        <script type="text/javascript" src="jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
         <script type="text/javascript" src="popup.js"></script>
     </head>
     <body>
         <h3 style="font-weight:bold; text-align:center;">DOM Info</h3>
         <table border="1" cellpadding="3" style="border-collapse:collapse;">
             <tr>
-                <td nowrap>Total number of elements:</td>
-                <td align="right"><span id="total">N/A</span></td>
-            </tr>
-            <tr>
-                <td nowrap>Number of input elements:</td>
-                <td align="right"><span id="inputs">N/A</span></td>
-            </tr>
-            <tr>
-                <td nowrap>Number of button elements:</td>
-                <td align="right"><span id="buttons">N/A</span></td>
+                <td nowrap>Tree Depth:</td>
+                <td align="right"><span id="depth">N/A</span></td>
             </tr>
         </table>
+        <div>
+            <label for="level">Lowest Level Showing:</label>
+            <input type="text" id="level" readonly style="border:0; color:#f6931f; font-weight:bold;">
+        </div>
+        <div id="slider"></div>
     </body>
 </html>

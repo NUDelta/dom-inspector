@@ -1,8 +1,18 @@
 /* Update the relevant fields with the new data */
-function setDOMInfo(info) {
-    document.getElementById('total').textContent   = info.total;
-    document.getElementById('inputs').textContent  = info.inputs;
-    document.getElementById('buttons').textContent = info.buttons;
+function generateSlider(info) {
+    document.getElementById('depth').textContent = info.depth;
+    if (info.depth) {
+        var depth = parseInt(info.depth);
+        $('#slider').slider({
+            min: 1,
+            max: depth,
+            value: depth,
+            slide: function(event, ui) {
+                $('#level').val(ui.value);
+            }
+        });
+        $('#level').val($('#slider').slider('value'));
+    }
 }
 
 /* Once the DOM is ready... */
@@ -18,6 +28,6 @@ window.addEventListener('DOMContentLoaded', function() {
                 {from: 'popup', subject: 'DOMInfo'},
                 /* ...also specifying a callback to be called
                  *    from the receiving end (content script) */
-                setDOMInfo);
+                generateSlider);
     });
 });
